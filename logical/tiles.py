@@ -35,21 +35,21 @@ while len(domino) != 0:
 print(player1, player2, player3, player4)
 turno = 0
 
-while len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4) != 0:
+while True:
+    # len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4) != 0:
     table = [player1, player2, player3, player4]
     print("Introduzca un valor")
     # a = input()
     for x in range(0, 3):
-        if ([6, 6] in table[x]):
+        if [6, 6] in table[x]:
             break
     if x % 2 == 0:
+        mesa[0] = table[x]
         if x == 0:
-            mesa[0] = table[x]
             mesa[2] = table[2]
             mesa[1] = table[1]
             mesa[3] = table[3]
         else:
-            mesa[0] = table[x]
             mesa[2] = table[0]
             mesa[1] = table[1]
             mesa[3] = table[3]
