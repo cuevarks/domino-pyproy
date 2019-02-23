@@ -72,6 +72,9 @@ while True:
     # if table[turno][a] == [6,6]:
     # print("fn")
 
+    for i in range(0,3):
+        for i in range(0, 3):
+            mesa[i]
 
 
 
