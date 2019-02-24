@@ -61,8 +61,8 @@ while len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4
             mano[2] = table[3]
             mano[3] = table[2]
         else:
-            mano[2] = table[1]
             mano[1] = table[0]
+            mano[2] = table[1]
             mano[3] = table[2]
 
     print(mesa, '\n', table)
@@ -81,7 +81,8 @@ while len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4
             fch = mano[il].pop(mano[il].index(mano[il][int(re) - 1]))
             if len(mesa) == 0:
                 mesa.append(fch)
-
+            elif mesa[len(mesa) - 1][1] == fch[1]:
+                mesa.append(fch)
         print(mesa)
 
     break
