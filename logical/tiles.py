@@ -81,21 +81,21 @@ while juego:
         print(t + 2, ": Turno siguiente")
         re = input()
         if (len(mesa) > 0) or (int(re) > len(mano[il])):
-            print("Derecha (Der) o izquierda (iz)")
+            print("Derecha (D) o izquierda (i)")
             deis = input()  # type: str
         if int(re) <= len(mano[il]):
             fch = mano[il].pop(mano[il].index(mano[il][int(re) - 1]))
             if len(mesa) == 0:
                 mesa.append(fch)
-            elif mesa[len(mesa) - 1][1] == fch[1] and (str(deis) == "Der" or str(deis) == "der"):
+            elif mesa[len(mesa) - 1][1] == fch[1] and (str(deis) == "D" or str(deis) == "d"):
                 fch[0], fch[1] = fch[1], fch[0]
                 mesa.append(fch)
-            elif mesa[len(mesa) - 1][1] == fch[0] and (str(deis) == "Der" or str(deis) == "der"):
+            elif mesa[len(mesa) - 1][1] == fch[0] and (str(deis) == "D" or str(deis) == "d"):
                 mesa.append(fch)
-            elif mesa[0][0] == fch[0] and str(deis) == "iz":
+            elif mesa[0][0] == fch[0] and (str(deis) == "I" and str(deis) == "i"):
                 fch[0], fch[1] = fch[1], fch[0]
                 mesa.insert(0, fch)
-            elif mesa[0][0] == fch[1] and str(deis) == "iz":
+            elif mesa[0][0] == fch[1] and (str(deis) == "I" and str(deis) == "i"):
                 mesa.insert(0, fch)
         print(mesa)
         if len(mano[0]) == 0 or len(mano[1]) == 0 or len(mano[2]) == 0 or len(mano[3]) == 0:
