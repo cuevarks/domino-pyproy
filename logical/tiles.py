@@ -80,7 +80,7 @@ while True:
         print(t + 2, ": Turno siguiente")
         re = input()
         print("Derecha (Der) o izquierda (iz)")
-        deis = input()
+        deis = input()  # type: str
         if int(re) <= len(mano[il]):
             fch = mano[il].pop(mano[il].index(mano[il][int(re) - 1]))
             if len(mesa) == 0:
@@ -90,10 +90,10 @@ while True:
                 mesa.append(fch)
             elif mesa[len(mesa) - 1][1] == fch[0] and str(deis) == "Der":
                 mesa.append(fch)
-            elif mesa[len(mesa) - 1][0] == fch[0] and str(deis) == "iz":
+            elif mesa[0][0] == fch[0] and str(deis) == "iz":
                 fch[0], fch[1] = fch[1], fch[0]
                 mesa.insert(0, fch)
-            elif mesa[len(mesa) - 1][0] == fch[1] and str(deis) == "iz":
+            elif mesa[0][0] == fch[1] and str(deis) == "iz":
                 mesa.insert(0, fch)
         print(mesa)
         if len(mano[0]) == 0 or len(mano[1]) == 0 or len(mano[2]) == 0 or len(mano[3]) == 0:
