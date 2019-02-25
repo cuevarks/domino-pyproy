@@ -1,7 +1,8 @@
 import random
-#import logical.player ########
 
-#logical.player.juan.player1 = [] #####
+# import logical.player ########
+
+# logical.player.juan.player1 = [] #####
 player1 = []
 player2 = []
 player3 = []
@@ -10,7 +11,8 @@ player4 = []
 ficha = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [2, 2],
          [2, 3], [2, 4], [2, 5], [2, 6], [3, 3], [3, 4], [3, 5], [3, 6], [4, 4], [4, 5], [4, 6], [5, 5], [5, 6], [6, 6]]
 
-#player_distribution
+
+# player_distribution
 def player(item):
     if len(player1) <= 6:
         player1.append(item)
@@ -66,18 +68,18 @@ while len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4
             mano[3] = table[2]
 
     print(mesa, '\n', table)
-
+    break
     # turno +=1
     # if table[turno][a] == [6,6]:
     # print("fn")
-
+while True:
     for il in range(0, 4):
         print("player", il + 1)
         for t in range(0, len(mano[il])):
             print((t + 1), ": ", mano[il][t])
         print(t + 2, ": Turno siguiente")
         re = input()
-        if int(re) <= 7:
+        if int(re) <= len(mano[il]):
             fch = mano[il].pop(mano[il].index(mano[il][int(re) - 1]))
             if len(mesa) == 0:
                 mesa.append(fch)
@@ -87,14 +89,5 @@ while len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4
             elif mesa[len(mesa) - 1][1] == fch[0]:
                 mesa.append(fch)
         print(mesa)
-
-    break
-
-
-
-
-
-
-
-
-
+        if len(mano[0]) == 0 or len(mano[1]) == 0 or len(mano[2]) == 0 or len(mano[3]) == 0:
+            break
