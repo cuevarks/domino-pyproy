@@ -77,11 +77,14 @@ while len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4
             print((t + 1), ": ", mano[il][t])
         print(t + 2, ": Turno siguiente")
         re = input()
-        if int(x) <= 7:
+        if int(re) <= 7:
             fch = mano[il].pop(mano[il].index(mano[il][int(re) - 1]))
             if len(mesa) == 0:
                 mesa.append(fch)
             elif mesa[len(mesa) - 1][1] == fch[1]:
+                fch[0], fch[1] = fch[1], fch[0]
+                mesa.append(fch)
+            elif mesa[len(mesa) - 1][1] == fch[0]:
                 mesa.append(fch)
         print(mesa)
 
