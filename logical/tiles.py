@@ -72,23 +72,25 @@ while len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4
     # turno +=1
     # if table[turno][a] == [6,6]:
     # print("fn")
-while True:
+juego = True
+while juego:
     for il in range(0, 4):
         print("player", il + 1)
         for t in range(0, len(mano[il])):
             print((t + 1), ": ", mano[il][t])
         print(t + 2, ": Turno siguiente")
         re = input()
-        print("Derecha (Der) o izquierda (iz)")
-        deis = input()  # type: str
+        if (len(mesa) > 0) or (int(re) > len(mano[il])):
+            print("Derecha (Der) o izquierda (iz)")
+            deis = input()  # type: str
         if int(re) <= len(mano[il]):
             fch = mano[il].pop(mano[il].index(mano[il][int(re) - 1]))
             if len(mesa) == 0:
                 mesa.append(fch)
-            elif mesa[len(mesa) - 1][1] == fch[1] and str(deis) == "Der":
+            elif mesa[len(mesa) - 1][1] == fch[1] and (str(deis) == "Der" or str(deis) == "der"):
                 fch[0], fch[1] = fch[1], fch[0]
                 mesa.append(fch)
-            elif mesa[len(mesa) - 1][1] == fch[0] and str(deis) == "Der":
+            elif mesa[len(mesa) - 1][1] == fch[0] and (str(deis) == "Der" or str(deis) == "der"):
                 mesa.append(fch)
             elif mesa[0][0] == fch[0] and str(deis) == "iz":
                 fch[0], fch[1] = fch[1], fch[0]
@@ -97,4 +99,5 @@ while True:
                 mesa.insert(0, fch)
         print(mesa)
         if len(mano[0]) == 0 or len(mano[1]) == 0 or len(mano[2]) == 0 or len(mano[3]) == 0:
+            juego = False
             break
