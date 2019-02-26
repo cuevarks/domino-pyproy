@@ -14,10 +14,11 @@ ficha = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [1, 1], [1, 2],
 #chequear si el juego se tranca
 def check_tranc(a,b):
     u = 0
-    for i in range(0,len(b)):
-        if a[0][0] == b[i][0] or a[len(a) - 1][1] == b[i][0] or a[0][0] == b[i][1] or a[len(a) - 1][1] == b[i][1]:
-            u += 1
-    if (u > 0):
+    for f in b:
+        for i in range(0, len(f)):
+            if a[0][0] == f[i][0] or a[len(a) - 1][1] == f[i][0] or a[0][0] == f[i][1] or a[len(a) - 1][1] == f[i][1]:
+                u += 1
+    if u > 0:
         return False
     else:
         return True
@@ -93,7 +94,7 @@ while juego:
         print("player", il + 1)
         for t in range(0, len(mano[il])):
             print((t + 1), ": ", mano[il][t])
-        print(t + 2, ": Turno siguiente")
+        print(t + 2, ": Turno siguiente", "\n")
         re = input()
         if (len(mesa) > 0) and (int(re) <= t+1):
             print("Derecha (D) o izquierda (i)")
@@ -116,7 +117,7 @@ while juego:
         if len(mano[0]) == 0 or len(mano[1]) == 0 or len(mano[2]) == 0 or len(mano[3]) == 0:
             juego = False
             break
-        elif check_tranc(mesa,mano[il]):
+        elif check_tranc(mesa,mano):
             print("el juego se tranco")
             juego = False
             break
