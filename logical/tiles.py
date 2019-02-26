@@ -15,7 +15,7 @@ ficha = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [1, 1], [1, 2],
 def check_tranc(a,b):
     u = 0
     for i in range(0,len(b)):
-        if (a[0][0] == b[i][0] or a[len(a) - 1][1] == b[i][0] or a[0][0] == b[i][1] or a[len(a) - 1][0] == b[i][1]):
+        if a[0][0] == b[i][0] or a[len(a) - 1][1] == b[i][0] or a[0][0] == b[i][1] or a[len(a) - 1][1] == b[i][1]:
             u += 1
     if (u > 0):
         return False
