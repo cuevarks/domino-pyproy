@@ -80,7 +80,7 @@ while juego:
             print((t + 1), ": ", mano[il][t])
         print(t + 2, ": Turno siguiente")
         re = input()
-        if (len(mesa) > 0) or (int(re) > len(mano[il])):
+        if (len(mesa) > 0) and (int(re) <= t+1):
             print("Derecha (D) o izquierda (i)")
             deis = input()  # type: str
         if int(re) <= len(mano[il]):
