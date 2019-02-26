@@ -13,7 +13,7 @@ ficha = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [1, 1], [1, 2],
 
 
 # player_distribution
-def player(item):
+def player_distribution(item):
     if len(player1) <= 6:
         player1.append(item)
     elif len(player2) <= 6:
@@ -34,7 +34,7 @@ g = 0
 while len(domino) != 0:
     a = random.choice(domino)
     fd = domino.pop(domino.index(a))
-    player(fd)
+    player_distribution(fd)
     print(fd)
 print(player1, player2, player3, player4)
 turno = 0
@@ -92,10 +92,10 @@ while juego:
                 mesa.append(fch)
             elif mesa[len(mesa) - 1][1] == fch[0] and (str(deis) == "D" or str(deis) == "d"):
                 mesa.append(fch)
-            elif mesa[0][0] == fch[0] and (str(deis) == "I" and str(deis) == "i"):
+            elif mesa[0][0] == fch[0] and (str(deis) == "I" or str(deis) == "i"):
                 fch[0], fch[1] = fch[1], fch[0]
                 mesa.insert(0, fch)
-            elif mesa[0][0] == fch[1] and (str(deis) == "I" and str(deis) == "i"):
+            elif mesa[0][0] == fch[1] and (str(deis) == "I" or str(deis) == "i"):
                 mesa.insert(0, fch)
         print(mesa)
         if len(mano[0]) == 0 or len(mano[1]) == 0 or len(mano[2]) == 0 or len(mano[3]) == 0:
