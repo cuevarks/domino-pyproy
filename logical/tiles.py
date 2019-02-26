@@ -35,13 +35,13 @@ while len(domino) != 0:
     a = random.choice(domino)
     fd = domino.pop(domino.index(a))
     player_distribution(fd)
-    print(fd)
-print(player1, player2, player3, player4)
+    #print(fd)
+#print(player1, player2, player3, player4)
 turno = 0
 
 while len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4) != 0:
     table = [player1, player2, player3, player4]
-    print("Introdusca un valor")
+    #print("Introdusca un valor")
     # a = input()
     for x in range(0, 3):
         if [6, 6] in table[x]:
@@ -67,7 +67,7 @@ while len(player1) != 0 or len(player2) != 0 or len(player3) != 0 or len(player4
             mano[2] = table[1]
             mano[3] = table[2]
 
-    print(mesa, '\n', table)
+    #print(mesa, '\n', table)
     break
     # turno +=1
     # if table[turno][a] == [6,6]:
