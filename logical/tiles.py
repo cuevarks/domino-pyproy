@@ -12,6 +12,21 @@ ficha = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [1, 1], [1, 2],
          [2, 3], [2, 4], [2, 5], [2, 6], [3, 3], [3, 4], [3, 5], [3, 6], [4, 4], [4, 5], [4, 6], [5, 5], [5, 6], [6, 6]]
 
 
+def check_tranc(a,b):
+    u = 0
+    for i in range(0,len(b)):
+        if (a[0][0] == b[i][0] or a[len(a) - 1][1] == b[i][0] or a[0][0] == b[i][1] or a[len(a) - 1][0] == b[i][1]):
+            u += 1
+    if (u > 0):
+        return False
+    else:
+        return True
+
+
+
+
+
+
 # player_distribution
 def player_distribution(item):
     if len(player1) <= 6:
@@ -99,5 +114,9 @@ while juego:
                 mesa.insert(0, fch)
         print(mesa)
         if len(mano[0]) == 0 or len(mano[1]) == 0 or len(mano[2]) == 0 or len(mano[3]) == 0:
+            juego = False
+            break
+        if check_tranc(mesa,mano[il]):
+            print("el juego se tranco")
             juego = False
             break
