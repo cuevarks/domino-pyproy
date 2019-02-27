@@ -1,11 +1,7 @@
-class juan():
-    player1 = []
-class jugador():
+class Player:
 
-    @property
-    def player_play(self):
-        juan.player1 = []
-
-
-
-
+    def __init__(self, name, tiles, score, amount):
+        self.player_name = name
+        self.player_tiles = tiles
+        self.player_score = score
+        self.amount_player = amount
