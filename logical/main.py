@@ -1,34 +1,28 @@
 # -*- coding: utf-8 -*-
-""""
-from logical import player as player
-from logical import game_logic as game
-from logical import score as score
-from logical import tiles as tiles
-"""
-constraint, names = True, []
+
+from logical.player import Player
+from logical.game_logic import Game
+#from logical.score import
+from logical.tiles import Tiles
+
+constraint, names, myPlayers = True, [], []
+
 
 def constraints(input_value):
     if isinstance(input_value, int):
         return False
     return True
 
-print ("--------- DOMINÓ ER CIBAO v1.0 ---------")
+print ("--------- DOMINÓ ER CIBAO v1.1 ---------")
 
-while (constraint):
+while constraint:
     aux = input("¿Cuántos van a jugar? \n")
     if constraints(aux) or (aux != 2 and aux != 4): print("\nNúmero inválido")
     else:
         amount = aux
         constraint = False
 
-
-for name in range(0, amount):
-    aux = raw_input("Nombre jugador " + str(name+1) + ":\n")
-    names.append(aux)
-
-
-
-
-
-
+for player_number in range(0, amount):
+    name = raw_input("Nombre jugador " + str(player_number + 1) + ":\n")
+    myPlayers.append(Player(name, Tiles, 0))
 
