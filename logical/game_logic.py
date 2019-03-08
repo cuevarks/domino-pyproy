@@ -1,18 +1,21 @@
+from logical.player import Player
+
+
 class Game:
-    def __init__(self, ):
+    def __init__(self, name, tiles, score, amount):
         self.player_name = name
         self.player_tiles = tiles
         self.player_score = score
+        self.players_amount = amount
+
+#EL JUEGO ACABA CUANDO EL JUGADOR SE QUEDA SIN TURNOS, TRADUCE A MANO EN EL CODIGO ANTERIOR
+
+    def player_turns(self):
 
 
-    def check_tranc(a, b):
-        u = 0
-        for f in b:
-            for i in range(0, len(f)):
-                if a[0][0] == f[i][0] or a[len(a) - 1][1] == f[i][0] or a[0][0] == f[i][1] or a[len(a) - 1][1] == f[i][
-                    1]:
-                    u += 1
-        if u > 0:
-            return False
-        else:
-            return True
+    def game(self):
+        for player_number in range(0, self.players_amount):
+            print ("Jugador", player_number + 1)
+
+            for turns in range(0, self.players_amount):
+                print((turns + 1), ':', )
