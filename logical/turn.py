@@ -1,4 +1,4 @@
-#from logical.player import Player
+#from logical2.player import Player
 #LOGICA PARA LOS TURNOS v1.0
 
 
@@ -38,21 +38,25 @@ class Turn:
         if len(self.player_list) == 4:
             return True
         return False
-#IF 4 TRUE
-    if check_players():
-        board = [0, 1, 2, 3] #MANO
-        if not check_double():
-            first_turn = board[highest_tile()]
+
+    def get_turn(self):
+        if Turn.check_players():
+            board = [0, 1, 2, 3]  # MANO
+            if not Turn.check_double(self):
+                first_turn = board[Turn.highest_tile(self)]
+                del board[first_turn]
+                board = sorting(board)
+                board.insert(0, first_turn)
+
+            first_turn = Turn.check_double(self)
             del board[first_turn]
             board = sorting(board)
             board.insert(0, first_turn)
 
-        first_turn = check_double()
-        del board[first_turn]
-        board = sorting(board)
-        board.insert(0, first_turn)
+        first_turn = Turn.highest_tile(self)
+        if first_turn == 0:
+            board = [0, 1]
 
-    first_turn = highest_tile()
-    if first_turn == 0:
-        board = [0, 1]
-    board = [1, 0]
+        board = [1, 0]
+        return board
+
