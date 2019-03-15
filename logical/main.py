@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from logical.player import Player
-from logical.turn import Turn
-import logical.turn
-#from logical.game_logic import Game
-#from logical2.score import
+from logical.game_logic import Game
+#from logical.score import
 from logical.tiles import Tiles
 
-constraint, names, myPlayers, myTurns, turnList = True, [], [], [], []
+constraint, names, myPlayers = True, [], []
 
 
 def constraints(input_value):
@@ -17,16 +15,9 @@ def constraints(input_value):
 
 print ("--------- DOMINÓ ER CIBAO v1.1 ---------")
 
-
 while constraint:
-
-    aux = raw_input("¿Cuántos van a jugar? \n")
-    if constraints(aux):
-        print("\n Introduzca un numero")
-        break
-    aux = int(aux)
-    if (aux != 2 and aux != 4):
-        print("\nNúmero inválido")
+    aux = input("¿Cuántos van a jugar? \n")
+    if constraints(aux) or (aux != 2 and aux != 4): print("\nNúmero inválido")
     else:
         amount = aux
         constraint = False
@@ -35,7 +26,3 @@ for player_number in range(0, amount):
     name = raw_input("Nombre jugador " + str(player_number + 1) + ":\n")
     myPlayers.append(Player(name, Tiles, 0))
 
-myTurns = Turn(myPlayers)
-turnList = myTurns.get_turn()
-
-print myTurns
