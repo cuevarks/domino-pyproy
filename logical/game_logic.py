@@ -1,4 +1,12 @@
-from logical.player import Player
+def player_turns(turns, players_amount):
+    player_number = []
+    player_turns = []
+
+    for player in range(0, players_amount):
+        player_number.append(player)
+
+    player_turns.append(player_number, turns)
+    return player_turns
 
 
 class Game:
@@ -9,8 +17,6 @@ class Game:
         self.players_amount = amount
 
 #EL JUEGO ACABA CUANDO EL JUGADOR SE QUEDA SIN TURNOS, TRADUCE A MANO EN EL CODIGO ANTERIOR
-
-    def player_turns(self):
 
 
     def game(self):
