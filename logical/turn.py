@@ -40,7 +40,7 @@ class Turn:
         return False
 
     def get_turn(self):
-        if Turn.check_players():
+        if Turn.check_players(self):
             board = [0, 1, 2, 3]  # MANO
             if not Turn.check_double(self):
                 first_turn = board[Turn.highest_tile(self)]
