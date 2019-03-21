@@ -92,8 +92,11 @@ while juego:
                 else:
                     k = True
         print(mesa)
-    juego = Game.ganarcheck(myPlayers)
-                                                        #myPlayers[il].player_tiles[re - 1].index(myPlayers[il].player_tiles[re - 1]))
+        if Game.ganarcheck(myPlayers):
+            juego = Game.ganarcheck(myPlayers)
+            break
+
+            #myPlayers[il].player_tiles[re - 1].index(myPlayers[il].player_tiles[re - 1]))
 
 
 #for playtiles in range(0, len(myPlayers)):
