@@ -9,4 +9,4 @@ class Player:
         self. player_turn = turn
 
     def show_tiles(self):
-        print self.player_tiles
+        print (self.player_tiles)

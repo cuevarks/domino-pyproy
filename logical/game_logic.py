@@ -11,6 +11,20 @@ class Game:
 #EL JUEGO ACABA CUANDO EL JUGADOR SE QUEDA SIN TURNOS, TRADUCE A MANO EN EL CODIGO ANTERIOR
 
     def player_turns(self):
+        return self
+
+    def switch(fch, mesa, deis):
+        if mesa[len(mesa) - 1][1] == fch[1] and (str(deis) == "D" or str(deis) == "d"):
+            fch[0], fch[1] = fch[1], fch[0]
+            return fch
+        elif mesa[len(mesa) - 1][1] == fch[0] and (str(deis) == "D" or str(deis) == "d"):
+            return fch
+
+        elif mesa[0][0] == fch[0] and (str(deis) == "I" or str(deis) == "i"):
+            fch[0], fch[1] = fch[1], fch[0]
+            return fch
+        elif mesa[0][0] == fch[1] and (str(deis) == "I" or str(deis) == "i"):
+            return fch
 
 
     def game(self):
@@ -19,3 +33,22 @@ class Game:
 
             for turns in range(0, self.players_amount):
                 print((turns + 1), ':', )
+
+    def check(mesa, fh):
+        if fh == [6, 6] and len(mesa) == 0:
+            return True
+        if len(mesa) != 0:
+            if mesa[0][0] == fh[0] or mesa[len(mesa) - 1][1] == fh[0] or mesa[0][0] == fh[1] or mesa[len(mesa) - 1][1] == fh[1]:
+                return True
+        else:
+            return False
+
+    def ganarcheck(self):
+        if len(self) == 4:
+            if len(self[0].player_tiles) == 0 or len(self[1].player_tiles) == 0 or len(self[2].player_tiles) == 0 or len(self[0].player_tiles) == 0:
+                return True
+        elif len(self) == 2:
+            if len(self[0].player_tiles) == 0 or len(self[1].player_tiles) == 0:
+                return True
+
+        return False
