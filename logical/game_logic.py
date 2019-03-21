@@ -45,7 +45,7 @@ class Game:
 
     def ganarcheck(self):
         if len(self) == 4:
-            if len(self[0].player_tiles) == 0 or len(self[1].player_tiles) == 0 or len(self[2].player_tiles) == 0 or len(self[0].player_tiles) == 0:
+            if len(self[0].player_tiles) == 0 or len(self[1].player_tiles) == 0 or len(self[2].player_tiles) == 0 or len(self[3].player_tiles) == 0:
                 return False
         elif len(self) == 2:
             if len(self[0].player_tiles) == 0 or len(self[1].player_tiles) == 0:

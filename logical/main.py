@@ -92,7 +92,9 @@ while juego:
                 else:
                     k = True
         print(mesa)
-        if Game.ganarcheck(myPlayers):
+
+        if len(myPlayers[0].player_tiles) == 0 or len(myPlayers[1].player_tiles) == 0 or len(myPlayers[2].player_tiles) == 0 or len(myPlayers[3].player_tiles) == 0:
+            print(len(myPlayers))
             juego = Game.ganarcheck(myPlayers)
             break
 
