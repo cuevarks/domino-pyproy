@@ -13,7 +13,7 @@ constraint, names, myPlayers, myTurns, turnList = True, [], [], [], []
 def constraints(input_value):
     if isinstance(input_value, int):
         return False
-    return True
+    return None
 
 print ("--------- DOMINÓ ER CIBAO v1.1 ---------")
 
@@ -33,9 +33,10 @@ while constraint:
 
 for player_number in range(0, amount):
     name = raw_input("Nombre jugador " + str(player_number + 1) + ":\n")
-    myPlayers.append(Player(name, Tiles, 0))
-
-myTurns = Turn(myPlayers)
-turnList = myTurns.get_turn()
-
-print myTurns
+    myTiles = Tiles()
+    myPlayers.append(Player(name, myTiles.tiles_distribution(), 0))
+#
+# myTurns = Turn(myPlayers)
+# turnList = myTurns.get_turn()
+# #
+print myPlayers[0].player_tiles
