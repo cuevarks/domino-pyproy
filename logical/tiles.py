@@ -22,11 +22,7 @@ class Tiles(object):
              [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [3, 3], [3, 4], [3, 5], [3, 6], [4, 4], [4, 5], [4, 6], [5, 5],
              [5, 6], [6, 6]]
 
-    def ifmi(a):
-        if a == 2:
-            return 14
-        else:
-            return 7
+
 
     def randomiz(domino):
         a = random.choice(domino)

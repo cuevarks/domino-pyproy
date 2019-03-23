@@ -13,20 +13,6 @@ class Game:
     def player_turns(self):
         return self
 
-    def switch(fch, mesa, deis):
-        if mesa[len(mesa) - 1][1] == fch[1] and (str(deis) == "D" or str(deis) == "d"):
-            fch[0], fch[1] = fch[1], fch[0]
-            return fch
-        elif mesa[len(mesa) - 1][1] == fch[0] and (str(deis) == "D" or str(deis) == "d"):
-            return fch
-
-        elif mesa[0][0] == fch[0] and (str(deis) == "I" or str(deis) == "i"):
-            fch[0], fch[1] = fch[1], fch[0]
-            return fch
-        elif mesa[0][0] == fch[1] and (str(deis) == "I" or str(deis) == "i"):
-            return fch
-
-
     def game(self):
         for player_number in range(0, self.players_amount):
             print ("Jugador", player_number + 1)
@@ -51,3 +37,15 @@ class Game:
             if len(self[0].player_tiles) == 0 or len(self[1].player_tiles) == 0:
                 return False
         return True
+
+    def check2(mesa, fh):
+        m = ""
+        if len(mesa) != 0:
+            if (mesa[0][0] == fh[0]) or (mesa[0][0] == fh[1]) and (mesa[len(mesa) - 1][0] == fh[0]) or (mesa[len(mesa) - 1][0] == fh[1]):
+                m = "di"
+            elif (mesa[len(mesa) - 1][0] == fh[0]) or (mesa[len(mesa) - 1][0] == fh[1]):
+                m = "d"
+            elif (mesa[0][0] == fh[0]) or (mesa[0][0] == fh[1]):
+                m = "i"
+
+        return m
