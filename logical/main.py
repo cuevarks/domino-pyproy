@@ -23,16 +23,15 @@ def presentar(mes):
     return s
 
 def switch(fch, mesa, deis):
-    if mesa[len(mesa) - 1][1] == fch[1] and (str(deis) == "D" or str(deis) == "d"):
+    if (mesa[len(mesa) - 1][1] == fch[1]) and (str(deis) == "D" or str(deis) == "d"):
         fch[0], fch[1] = fch[1], fch[0]
         return fch
-    elif mesa[len(mesa) - 1][1] == fch[0] and (str(deis) == "D" or str(deis) == "d"):
+    elif (mesa[len(mesa) - 1][1] == fch[0]) and (str(deis) == "D" or str(deis) == "d"):
         return fch
-
-    elif mesa[0][0] == fch[0] and (str(deis) == "I" or str(deis) == "i"):
+    elif (mesa[0][0] == fch[0]) and (str(deis) == "I" or str(deis) == "i"):
         fch[0], fch[1] = fch[1], fch[0]
         return fch
-    elif mesa[0][0] == fch[1] and (str(deis) == "I" or str(deis) == "i"):
+    elif (mesa[0][0] == fch[1]) and (str(deis) == "I" or str(deis) == "i"):
         return fch
 
 def ifmi(a):
@@ -87,6 +86,7 @@ mesa = []
 
 while juego:
     for il in range(0, amount):
+        passs1 = False
         passs = True
         while passs:
             print(myPlayers[il].player_name)
@@ -94,44 +94,43 @@ while juego:
                 print(y+1, ": ", '[{}|{}]'.format(myPlayers[il].player_tiles[y][0],myPlayers[il].player_tiles[y][1]))
             print(y + 2, ": Turno siguiente", "\n")
             re = int(input())
-            if re > y + 1:
+            if re >= y + 1:
                 passs = False
-
+                passs1 = True
+                break
             elif Game.check(mesa, myPlayers[il].player_tiles[re - 1]):
                 passs = False
             else:
                 print("Esa ficha no combina con las otras")
                 g = presentar(mesa)
                 print(''.join(g))
-        if re > y + 1:
-            g = presentar(mesa)
-            print(''.join(g))
+        if passs1:
             break
         elif len(mesa) == 0 and re <= y + 1:
             fch = myPlayers[il].player_tiles.pop(re - 1)
             mesa.append(fch)
         elif Game.check2(mesa, myPlayers[il].player_tiles[re - 1]) == "i":
-
+            print(Game.check2(mesa, myPlayers[il].player_tiles[re - 1]))
             fch = myPlayers[il].player_tiles.pop(re - 1)
             mesa.insert(0, switch(fch, mesa, "i"))
         elif Game.check2(mesa, myPlayers[il].player_tiles[re - 1]) == "d":
             fch = myPlayers[il].player_tiles.pop(re - 1)
-            mesa.insert(0, switch(fch, mesa, "d"))
+            mesa.append(switch(fch, mesa, "d"))
         elif Game.check2(mesa, myPlayers[il].player_tiles[re - 1]) == "di":
-            if (len(mesa) >= 1) and (re <= y+1):
-                fch = myPlayers[il].player_tiles.pop(re - 1)
-                k = True
-                while k:
-                    print("Derecha (D) o izquierda (i)")
-                    deis = input()
-                    if deis == "I" or deis == "i":
-                        mesa.insert(0, switch(fch, mesa, deis))
-                        k = False
-                    elif deis == "D" or deis == "d":
-                        mesa.append(switch(fch, mesa, deis))
-                        k = False
-                    else:
-                        k = True
+
+            fch = myPlayers[il].player_tiles.pop(re - 1)
+            k = True
+            while k:
+                print("Derecha (D) o izquierda (i)")
+                deis = input()
+                if deis == "I" or deis == "i":
+                    mesa.insert(0, switch(fch, mesa, deis))
+                    k = False
+                elif deis == "D" or deis == "d":
+                    mesa.append(switch(fch, mesa, deis))
+                    k = False
+                else:
+                    k = True
         g = presentar(mesa)
         print(''.join(g))
         if len(myPlayers) == 4:
