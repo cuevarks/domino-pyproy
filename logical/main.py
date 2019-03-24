@@ -105,6 +105,8 @@ while juego:
                 g = presentar(mesa)
                 print(''.join(g))
         if passs1:
+            g = presentar(mesa)
+            print(''.join(g))
             break
         elif len(mesa) == 0 and re <= y + 1:
             fch = myPlayers[il].player_tiles.pop(re - 1)

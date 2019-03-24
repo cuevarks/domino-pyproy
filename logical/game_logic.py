@@ -41,9 +41,9 @@ class Game:
     def check2(mesa, fh):
         m = ""
         if len(mesa) != 0:
-            if ((mesa[0][0] == fh[0]) or (mesa[0][0] == fh[1])) and ((mesa[len(mesa) - 1][0] == fh[0]) or (mesa[len(mesa) - 1][0] == fh[1])):
+            if ((mesa[0][0] == fh[0]) or (mesa[0][0] == fh[1])) and ((mesa[len(mesa) - 1][1] == fh[0]) or (mesa[len(mesa) - 1][1] == fh[1])):
                 m = "di"
-            elif (mesa[len(mesa) - 1][0] == fh[0]) or (mesa[len(mesa) - 1][0] == fh[1]):
+            elif (mesa[len(mesa) - 1][1] == fh[0]) or (mesa[len(mesa) - 1][1] == fh[1]):
                 m = "d"
             elif (mesa[0][0] == fh[0]) or (mesa[0][0] == fh[1]):
                 m = "i"
