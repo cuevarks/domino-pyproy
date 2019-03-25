@@ -94,12 +94,14 @@ while juego:
                 print(y+1, ": ", '[{}|{}]'.format(myPlayers[il].player_tiles[y][0],myPlayers[il].player_tiles[y][1]))
             print(y + 2, ": Turno siguiente", "\n")
             re = int(input())
-            if re >= y + 1:
+            print(y)
+            if re > y + 1:
                 passs = False
                 passs1 = True
                 break
             elif Game.check(mesa, myPlayers[il].player_tiles[re - 1]):
                 passs = False
+                break
             else:
                 print("Esa ficha no combina con las otras")
                 g = presentar(mesa)
