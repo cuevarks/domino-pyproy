@@ -38,7 +38,10 @@ class Turn:
                 return x
             x += 1
         return False
-
+    def switch(self):
+        sw = Turn.check_double(self)
+        self[sw], self[0] = self[0], self[sw]
+        return self
 
 ### SI HAY 4 JUGADORES
 

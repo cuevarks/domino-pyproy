@@ -79,8 +79,7 @@ for f in range(0, Tiles.ifmi(amount)):
 '''
 juego = True
 
-sw = Turn.check_double(myPlayers)
-myPlayers[sw], myPlayers[0] = myPlayers[0], myPlayers[sw]
+myPlayers = Turn.switch(myPlayers)
 
 mesa = []
 
@@ -94,8 +93,8 @@ while juego:
                 print(y+1, ": ", '[{}|{}]'.format(myPlayers[il].player_tiles[y][0],myPlayers[il].player_tiles[y][1]))
             print(y + 2, ": Turno siguiente", "\n")
             re = int(input())
-            print(y)
-            if re > y + 1:
+            #print(len(myPlayers[il].player_tiles), re)
+            if re > len(myPlayers[il].player_tiles) :
                 passs = False
                 passs1 = True
                 break
@@ -107,9 +106,7 @@ while juego:
                 g = presentar(mesa)
                 print(''.join(g))
         if passs1:
-            g = presentar(mesa)
-            print(''.join(g))
-            break
+            print("Turno siguiente")
         elif len(mesa) == 0 and re <= y + 1:
             fch = myPlayers[il].player_tiles.pop(re - 1)
             mesa.append(fch)
@@ -140,6 +137,7 @@ while juego:
         if len(myPlayers) == 4:
             if len(myPlayers[0].player_tiles) == 0 or len(myPlayers[1].player_tiles) == 0 or len(myPlayers[2].player_tiles) == 0 or len(myPlayers[3].player_tiles) == 0:
                 juego = Game.ganarcheck(myPlayers)
+
                 break
         else:
             if len(myPlayers[0].player_tiles) == 0 or len(myPlayers[1].player_tiles) == 0:
