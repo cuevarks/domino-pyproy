@@ -48,3 +48,8 @@ class Game:
             elif (mesa[0][0] == fh[0]) or (mesa[0][0] == fh[1]):
                 m = "i"
         return m
+
+    def empty(self):
+        for a in range(0, len(self)):
+            del self[a].player_tiles[:]
+        return self
