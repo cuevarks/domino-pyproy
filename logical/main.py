@@ -7,7 +7,9 @@ from logical.game_logic import Game
 #from logical2.score import
 from logical.tiles import Tiles
 constraint, names, myPlayers, myTurns, turnList = True, [], [], [], []
-Domino = Tiles.ficha
+Domino = []
+Domino = Tiles.fichama(Domino)
+sDomino = Tiles.ficha
 score = 0
 name = [0,0,0,0]
 
@@ -23,6 +25,31 @@ def check_tranc(a, b):
     else:
         return True
 
+
+def menor(self, mano, i):
+    n = mano[0]
+    for un in range(0, len(self)):
+        if n >= mano[un]:
+            n = mano[un]
+            i = un
+    return i
+
+
+def Scoretranc(self):
+    p, n, i = 0, 0, 0
+    tur = [0, 0, 0, 0]
+    mano = [0, 0, 0, 0]
+
+    dic = {'player': self, 'position': tur}
+    for u in range(0, len(self)):
+        for i in range(0, len(self[u].player_tiles)):
+            p = dic['player'][u].player_tiles[i][0] + dic['player'][u].player_tiles[i][1] + p
+        '''.self[u].player_tiles[i][0] + self[u].player_tiles[i][1] + p '''
+        dic['position'][u] = u
+        mano[u] = p
+        print(p)
+        p = 0
+    return menor(self, mano, i)
 
 def constraints(input_value):
     if isinstance(input_value, int):
@@ -84,7 +111,7 @@ for player_number in range(0, amount):
     name[e] = input("Nombre jugador " + str(player_number + 1) + ":\n")
     myTiles = Tiles()
     for inp in range(0, ifmi(amount)):
-        a, Domino = Tiles.randomiz(Domino)
+        a, Domino = Game.randomiz(Domino)
         mano.append(a)
     myPlayers.append(Player(name[e], mano, 0, 7))
     e += 1
@@ -99,11 +126,17 @@ while turn:
     if score >= 1:
         myPlayers = Game.empty(myPlayers)
         myTiles = Tiles()
-        Domino = Tiles.ficha
+        del Domino[:]
+        del mesa[:]
+        Domino = Tiles.fichama(Domino)
+
         for ak in range(0, len(myPlayers)):
+            mano = []
+            del myPlayers[ak].player_tiles
             for inp in range(0, ifmi(amount)):
-                a, Domino = Tiles.randomiz(Domino)
-                myPlayers[ak].player_tiles[inp] = a
+                a, Domino = Game.randomiz(Domino)
+                mano.append(a)
+            myPlayers[ak].player_tiles = mano
     juego = True
     while juego:
         for il in range(0, amount):
@@ -111,6 +144,7 @@ while turn:
             passs = True
             while passs:
                 print(myPlayers[il].player_name)
+                print("Puntaje: ",myPlayers[il].player_score)
                 for y in range(0, len(myPlayers[il].player_tiles)):
                     print(y+1, ": ", '[{}|{}]'.format(myPlayers[il].player_tiles[y][0], myPlayers[il].player_tiles[y][1]))
                 print(y + 2, ": Turno siguiente", "\n")
@@ -156,14 +190,17 @@ while turn:
                         k = True
             g = presentar(mesa)
             print(''.join(g))
-            if check_tranc(mesa, myPlayers):
-                juego = False
-                print("El juego se tranco")
-                break
-            elif len(myPlayers[il].player_tiles) == 0:
+            if len(myPlayers[il].player_tiles) == 0:
                 juego = Game.ganarcheck(myPlayers)
                 myPlayers[il].player_score += 1
                 print(myPlayers[il].player_score)
+                score += 1
+                break
+
+            elif check_tranc(mesa, myPlayers):
+                juego = False
+                print("El juego se tranco")
+                myPlayers[Scoretranc(myPlayers)].player_score += 1
                 score += 1
                 break
 

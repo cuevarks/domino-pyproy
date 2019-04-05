@@ -1,5 +1,6 @@
 from logical.player import Player
 
+import random
 
 class Game:
     def __init__(self, name, tiles, score, amount):
@@ -53,3 +54,9 @@ class Game:
         for a in range(0, len(self)):
             del self[a].player_tiles[:]
         return self
+
+    def randomiz(domino):
+        a = random.choice(domino)
+        fd = domino.pop(domino.index(a))
+        return fd, domino
+
