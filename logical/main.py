@@ -153,7 +153,7 @@ while turn:
                     passs = False
                     passs1 = True
                     break
-                elif Game.check(mesa, myPlayers[il].player_tiles[re - 1]):
+                elif Game.check(mesa, myPlayers[il].player_tiles[re - 1]) or score >= 1:
                     passs = False
                     break
                 else:
